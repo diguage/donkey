@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * Bean 助手类
@@ -26,10 +28,16 @@ public class BeanHelper {
 
     //    beanClassSet.parallelStream().collect(Collectors.toMap(c -> c, ReflectionUtil::newInstance));
 
-    //    beanClassSet
-    //        .parallelStream()
-    //        .map(ReflectionUtil::newInstance)
-    //        .forEach(o -> BEAN_MAP.put(o.getClass(), o));
+//    beanClassSet
+//        .parallelStream()
+//        .map(ReflectionUtil::newInstance)
+//        .forEach(o -> BEAN_MAP.put(o.getClass(), o));
+
+//    BEAN_MAP.putAll(
+//        beanClassSet
+//            .parallelStream()
+//            .collect(Collectors.toMap(c -> c, ReflectionUtil::newInstance)));
+
     for (Class<?> clazz : beanClassSet) {
       BEAN_MAP.put(clazz, ReflectionUtil.newInstance(clazz));
     }
